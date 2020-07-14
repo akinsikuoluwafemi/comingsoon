@@ -1,0 +1,63 @@
+:root {
+    --green:#4cedc4;
+    --darkGrey: #292f36;
+    --white: #fffffa;
+    --black: #000013;
+    --orange: #fa8334;
+    --red: #ff312e;
+
+}
+
+
+html {
+    text-shadow: 0 2px 0 rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.bodee {
+    background-image: url('../../images/floating-cogs.svg');
+    background-color: var(--darkGrey);
+    min-height: calc(100vh);
+    padding: .5rem;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+
+    grid-template-areas: 
+    "countdown"
+    "logo"
+    "title"
+    "description";
+    justify-items: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.btnn {
+    padding: 10px 20px;
+    background: var(--green);
+    color: var(--white);
+    transition: all .5s ease-in;
+    border-radius: 20px;
+    border: none;
+}
+
+.btnn:hover {
+    transition: all .5 ease-in;
+    background: var(--white);
+    color: var(--green);
+    transform: scale(1.15);
+
+}
+
+
+button:focus{
+    outline: none;
+}

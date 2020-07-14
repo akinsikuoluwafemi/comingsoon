@@ -1,0 +1,87 @@
+.countdown {
+    grid-area: countdown;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(50px, 150px));
+    grid-gap: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown div:not(:last-child){
+    border-right: 2px solid var(--green);
+}
+
+
+.countdown-segment {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+   
+
+}
+
+.countdown-segment-number {
+    display: grid;
+    font-size: 30px;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+    justify-content: center;
+}
+
+
+
+.countdown-segment-number:hover {
+    transform: scale(1.2);
+}
+
+
+.countdown-segment-caption {
+    font-size: 16px;
+    font-weight: 500;
+    display: grid;
+    justify-content: center;
+}
+
+@media(max-width: 500px){
+    .countdown {
+        border-bottom: 5px solid var(--green);
+    }
+
+
+    .countdown div:not(:last-child){
+        border-right: 0px;
+    }
+}
+
+.cog {
+    grid-template-areas: logo;
+    height: 11rem;
+    animation: App-logo-spin infinite 10s linear;
+}
+
+
+
+.comingsoon-text {
+    grid-template-areas: title;
+    font-size: 1.5rem;
+
+}
+
+
+.btnn {
+    grid-template-areas: description;
+
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
