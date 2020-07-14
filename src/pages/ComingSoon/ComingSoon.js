@@ -21,7 +21,7 @@ class ComingSoon  extends Component{
                    
                    <img src={Gear} className="cog" alt=""/>
 
-                   <p className="comingsoon-text"> We are Coming Soon</p>
+                   <p className="comingsoon-text">The buildforsdg website is Coming Soon</p>
                    <button className="btnn ">BACK TO HOME</button>
                </div>
            </div>
