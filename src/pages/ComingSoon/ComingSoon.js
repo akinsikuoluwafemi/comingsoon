@@ -7,7 +7,7 @@ class ComingSoon  extends Component{
     
     state = {
         countdown: {
-            futureDate: `2020-08-05T00:00:00`
+            futureDate: `2020-07-20T10:50:40.983Z`
         }
     }
 
