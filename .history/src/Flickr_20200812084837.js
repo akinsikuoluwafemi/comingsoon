@@ -9,20 +9,14 @@ const Flickr = () => {
     const [pictures,setPictures] = useState([])
     const [pageNumber, setPageNumber] = useState(1)
     const [perPage, setPerPage] = useState(10);
-    const [lastPicture, setLastPicture] = useState(null);
-    const [isVisble, setIsVisible] = useState(false);
+    const [lastPicture, setLastPicture] = useState(pictures[pictures.length - 1]);
     const imageRef = useRef();
     useEffect(() => {
        
         LoadMorePictures()
-        console.log(pictures)
-        console.log(imageRef.current);
-        
-
-
+        console.log(lastPicture)
     },[])
 
-    
 
     // const LoadMorePictures = () => {
     //     const flickrapikey = '162e01778853d65e29516a0b540192d9';
@@ -54,7 +48,7 @@ const Flickr = () => {
     
 
 
-    const LoadMorePictures = async ()=> {
+    const LoadMorePictures = async  ()=> {
         const flickrapikey = '162e01778853d65e29516a0b540192d9';
         const flickrsecret = 'fd337bc310818cbb'
 
@@ -65,60 +59,28 @@ const Flickr = () => {
 
         let { pages, photo } = data.photos
 
-        let pics = photo.map((pic) =>{
-            var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg'
-            return (
-                <img ref={imageRef} alt="" src={srcPath} />
-            )
-        })
+            let pics = photo.map((pic) =>{
+                var srcPath = 'https://farm' + pic.farm + '.staticflickr.com/' + pic.server + '/' + pic.id + '_' + pic.secret + '.jpg'
+                return (
+                    <img ref={imageRef} alt="" src={srcPath} />
+                )
+            })
 
-        setPictures([...pictures, ...pics])
-        setPageNumber(pageNumber + 1)
-        // setLastPicture(pics[pics.length - 1])
-        console.log(lastPicture)
-        console.log(pageNumber)
-        console.log(imageRef.current);
-        console.log(pictures)
-        setLastPicture(imageRef.current)
-        observer.observe(imageRef.current)
+            setPictures([...pictures, ...pics])
+            setPageNumber(pageNumber + 1)
+            setLastPicture(pics[pics.length - 1])
+            console.log(lastPicture)
+            console.log(pageNumber)
+            console.log(imageRef);
+
 
 
     }
 
-    let observer = new IntersectionObserver((entries) =>{
-        entries.forEach(entry => {
-            console.log(entry);
-            if (entry.isIntersecting === true){
-                setIsVisible(true);
-               
-                console.log('visible')
-                // console.log(entry.target)
-                // setLastPicture(entry.target)
-                console.log(lastPicture)
-            }else {
-                console.log('not visible')
-                
-                return null;
-            }
-        })
-
-
-        })
-
-
-    
-
-
-
-
 
     return (
         <div>
-            <div>
-                {pictures}
-                {pictures.length}
-
-            </div>
+            {pictures}
             <button onClick={() => LoadMorePictures()} className="btn-primary btn-lg">LOAD MORE</button>
         </div>
     )

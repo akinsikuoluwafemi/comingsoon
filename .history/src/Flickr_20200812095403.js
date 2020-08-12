@@ -9,8 +9,7 @@ const Flickr = () => {
     const [pictures,setPictures] = useState([])
     const [pageNumber, setPageNumber] = useState(1)
     const [perPage, setPerPage] = useState(10);
-    const [lastPicture, setLastPicture] = useState(null);
-    const [isVisble, setIsVisible] = useState(false);
+    const [lastPicture, setLastPicture] = useState(pictures[pictures.length - 1]);
     const imageRef = useRef();
     useEffect(() => {
        
@@ -78,6 +77,7 @@ const Flickr = () => {
         console.log(lastPicture)
         console.log(pageNumber)
         console.log(imageRef.current);
+        console.log(pageNumber)
         console.log(pictures)
         setLastPicture(imageRef.current)
         observer.observe(imageRef.current)
@@ -89,21 +89,15 @@ const Flickr = () => {
         entries.forEach(entry => {
             console.log(entry);
             if (entry.isIntersecting === true){
-                setIsVisible(true);
-               
-                console.log('visible')
-                // console.log(entry.target)
-                // setLastPicture(entry.target)
-                console.log(lastPicture)
+                  LoadMorePictures();
             }else {
-                console.log('not visible')
-                
                 return null;
             }
         })
 
 
         })
+        // console.log(observer)
 
 
     
