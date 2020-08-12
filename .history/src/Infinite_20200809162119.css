@@ -1,0 +1,54 @@
+
+.slide-container {
+      display: grid;
+    /* // grid-template-rows: repeat(2,1fr); */
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* // justify-content: center; */
+    /* // background: palegoldenrod; */
+    /* // height: 16rem; */
+    grid-gap: 1rem;
+
+}
+
+.figure-container {
+    
+}
+
+.fig-image {
+    background-image: url('../');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 10rem;
+}
+
+.tag {
+    /* // background: #52A7DD; */
+    padding: .3rem;    
+    display: inline;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+.figure-caption {
+    /* // background: #52A7DD; */
+    padding: .5rem;
+}
+
+.caption-text {
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+.caption-text:hover {
+    color: #52A7DD
+}
+
+
+.date {
+
+}
