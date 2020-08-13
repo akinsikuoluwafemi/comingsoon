@@ -49,7 +49,35 @@ const Flickr = () => {
     //      console.log(pictures.length)
     // }
     
-    
+    let observer = new IntersectionObserver((entries) =>
+    {
+        entries.forEach(entry =>
+        {
+            console.log(entry);
+            if (entry.isIntersecting && entry.target)
+            {
+                setIsVisible(entry.isIntersecting);
+                console.log('visible')
+                console.log(entry.isIntersecting)
+                // console.log(entry.target)
+                // setLastPicture(entry.target)
+                console.log(lastPicture)
+                LoadMorePictures()
+            } else
+            {
+                setIsVisible(entry.isIntersecting);
+                console.log(entry.isIntersecting)
+
+                console.log('not visible')
+
+
+                return null;
+            }
+        })
+
+
+    })
+
 
     const LoadMorePictures = async ()=> {
         const flickrapikey = '162e01778853d65e29516a0b540192d9';
@@ -80,35 +108,6 @@ const Flickr = () => {
         observer.observe(imageRef.current)
 
     }
-
-
-    let observer = new IntersectionObserver((entries) =>{
-        entries.forEach(entry => {
-            console.log(entry);
-            if (entry.isIntersecting && entry.target){
-                setIsVisible(entry.isIntersecting);
-                console.log('visible')
-                console.log(entry.isIntersecting)
-                console.log(entry.target)
-                setLastPicture(entry.target)
-                console.log(lastPicture)
-                LoadMorePictures()
-                imageRef.current = entry.target
-            }else {
-                setIsVisible(entry.isIntersecting);
-                console.log(entry.isIntersecting)
-                
-                console.log('not visible')
-                
-                
-            }
-        })
-
-
-    })
-
-
-
 
     
 

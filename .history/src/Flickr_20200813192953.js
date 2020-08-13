@@ -77,7 +77,7 @@ const Flickr = () => {
         // console.log(imageRef.current);
         console.log(pictures)
         setLastPicture(imageRef.current)
-        observer.observe(imageRef.current)
+        observer.observe(imageRef.current ||)
 
     }
 

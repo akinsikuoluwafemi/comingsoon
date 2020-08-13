@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 const Flickr = () => {
     let [pictures,setPictures] = useState([])
     let [pageNumber, setPageNumber] = useState(1)
-    let [perPage, setPerPage] = useState(10);
+    let [perPage, setPerPage] = useState(40);
     let [lastPicture, setLastPicture] = useState(null);
     let [isVisible, setIsVisible] = useState(false);
     let [observePictures, setObservePictures] = useState([]);

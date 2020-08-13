@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 
+
+
+
+
 const Flickr = () => {
     let [pictures,setPictures] = useState([])
     let [pageNumber, setPageNumber] = useState(1)
     let [perPage, setPerPage] = useState(10);
     let [lastPicture, setLastPicture] = useState(null);
     let [isVisible, setIsVisible] = useState(false);
-    let [observePictures, setObservePictures] = useState([]);
     const imageRef = useRef();
     useEffect(() => {
        
@@ -49,14 +52,14 @@ const Flickr = () => {
     //      console.log(pictures.length)
     // }
     
-    
+
 
     const LoadMorePictures = async ()=> {
         const flickrapikey = '162e01778853d65e29516a0b540192d9';
         const flickrsecret = 'fd337bc310818cbb'
 
 
-        let response = await fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + flickrapikey + `&tags=sports&per_page=${perPage}&page=${pageNumber}&format=json&nojsoncallback=1`)
+        let response = await fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + flickrapikey + `&tags=cars&per_page=${perPage}&page=${pageNumber}&format=json&nojsoncallback=1`)
         
         let data = await response.json()
 
@@ -74,43 +77,38 @@ const Flickr = () => {
         // setLastPicture(pics[pics.length - 1])
         console.log(lastPicture)
         console.log(pageNumber)
-        // console.log(imageRef.current);
+        console.log(imageRef.current);
         console.log(pictures)
         setLastPicture(imageRef.current)
         observer.observe(imageRef.current)
 
-    }
 
+    }
 
     let observer = new IntersectionObserver((entries) =>{
         entries.forEach(entry => {
             console.log(entry);
-            if (entry.isIntersecting && entry.target){
-                setIsVisible(entry.isIntersecting);
+            if (entry.isIntersecting === true || entry.intersectionRatio > 1){
+                setIsVisible(entry.isVisible);
+               
                 console.log('visible')
-                console.log(entry.isIntersecting)
-                console.log(entry.target)
-                setLastPicture(entry.target)
+                console.log(isVisible)
+                // console.log(entry.target)
+                // setLastPicture(entry.target)
                 console.log(lastPicture)
-                LoadMorePictures()
-                imageRef.current = entry.target
             }else {
                 setIsVisible(entry.isIntersecting);
-                console.log(entry.isIntersecting)
                 
                 console.log('not visible')
+                console.log(entry.isVisible)
+
                 
-                
+                return null;
             }
         })
 
 
-    })
-
-
-
-
-    
+        })
 
 
     

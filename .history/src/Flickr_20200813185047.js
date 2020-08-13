@@ -7,7 +7,6 @@ const Flickr = () => {
     let [perPage, setPerPage] = useState(10);
     let [lastPicture, setLastPicture] = useState(null);
     let [isVisible, setIsVisible] = useState(false);
-    let [observePictures, setObservePictures] = useState([]);
     const imageRef = useRef();
     useEffect(() => {
        
@@ -49,7 +48,7 @@ const Flickr = () => {
     //      console.log(pictures.length)
     // }
     
-    
+
 
     const LoadMorePictures = async ()=> {
         const flickrapikey = '162e01778853d65e29516a0b540192d9';
@@ -79,38 +78,33 @@ const Flickr = () => {
         setLastPicture(imageRef.current)
         observer.observe(imageRef.current)
 
-    }
 
+    }
 
     let observer = new IntersectionObserver((entries) =>{
         entries.forEach(entry => {
             console.log(entry);
-            if (entry.isIntersecting && entry.target){
+            if (entry.isIntersecting &&  entry.target){
                 setIsVisible(entry.isIntersecting);
+               
                 console.log('visible')
                 console.log(entry.isIntersecting)
-                console.log(entry.target)
-                setLastPicture(entry.target)
+                // console.log(entry.target)
+                // setLastPicture(entry.target)
                 console.log(lastPicture)
-                LoadMorePictures()
-                imageRef.current = entry.target
             }else {
                 setIsVisible(entry.isIntersecting);
                 console.log(entry.isIntersecting)
                 
                 console.log('not visible')
+
                 
-                
+                return null;
             }
         })
 
 
-    })
-
-
-
-
-    
+        })
 
 
     

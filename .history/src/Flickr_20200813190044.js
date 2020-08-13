@@ -51,6 +51,7 @@ const Flickr = () => {
     
     
 
+
     const LoadMorePictures = async ()=> {
         const flickrapikey = '162e01778853d65e29516a0b540192d9';
         const flickrsecret = 'fd337bc310818cbb'
@@ -80,35 +81,6 @@ const Flickr = () => {
         observer.observe(imageRef.current)
 
     }
-
-
-    let observer = new IntersectionObserver((entries) =>{
-        entries.forEach(entry => {
-            console.log(entry);
-            if (entry.isIntersecting && entry.target){
-                setIsVisible(entry.isIntersecting);
-                console.log('visible')
-                console.log(entry.isIntersecting)
-                console.log(entry.target)
-                setLastPicture(entry.target)
-                console.log(lastPicture)
-                LoadMorePictures()
-                imageRef.current = entry.target
-            }else {
-                setIsVisible(entry.isIntersecting);
-                console.log(entry.isIntersecting)
-                
-                console.log('not visible')
-                
-                
-            }
-        })
-
-
-    })
-
-
-
 
     
 

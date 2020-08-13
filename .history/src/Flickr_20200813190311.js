@@ -81,7 +81,6 @@ const Flickr = () => {
 
     }
 
-
     let observer = new IntersectionObserver((entries) =>{
         entries.forEach(entry => {
             console.log(entry);
@@ -89,25 +88,23 @@ const Flickr = () => {
                 setIsVisible(entry.isIntersecting);
                 console.log('visible')
                 console.log(entry.isIntersecting)
-                console.log(entry.target)
-                setLastPicture(entry.target)
+                // console.log(entry.target)
+                // setLastPicture(entry.target)
                 console.log(lastPicture)
                 LoadMorePictures()
-                imageRef.current = entry.target
             }else {
                 setIsVisible(entry.isIntersecting);
                 console.log(entry.isIntersecting)
                 
                 console.log('not visible')
+
                 
-                
+                return null;
             }
         })
 
 
     })
-
-
 
 
     
